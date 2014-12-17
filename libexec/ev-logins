@@ -15,4 +15,4 @@
 require File.expand_path("../../lib/ev", __FILE__)
 
 raise 'Please get GPG. i.e. `brew install gpg`' unless File.which('gpg')
-system "gpg -o - #{File.join Ev.root, 'data', 'logins.gpg'}"
+system "gpg --quiet -o - #{File.join Ev.root, 'data', 'logins.gpg'}"

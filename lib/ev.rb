@@ -4,7 +4,6 @@ Here = Pathname("..").expand_path(__FILE__)
 # mess with the fabric of reality to allow this stuff to run from anywhere
 ENV['BUNDLE_GEMFILE'] = (Here+'../Gemfile').expand_path.to_s
 
-
 # rbenv/rvm hack:
 # We've arranged it so that bx always runs its commands from $_BX_ROOT
 # so that ruby stuff can pick up the correct ruby version.
@@ -14,9 +13,8 @@ ENV['BUNDLE_GEMFILE'] = (Here+'../Gemfile').expand_path.to_s
 # Dir.chdir(ENV['EV_INVOCATION_PWD'])
 
 require 'rubygems'
-require 'bundler/setup'
-
-require 'tapp'
+require 'bundler'
+Bundler.require(:default)
 
 $LOAD_PATH.unshift Here
 

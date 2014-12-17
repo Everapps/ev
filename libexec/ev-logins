@@ -1,0 +1,18 @@
+#! /usr/bin/env ruby
+# Usage: ev logins
+# Summary: shows you all our general use logins
+# Help: Talk to Lachie or SengMing for the master password.
+# You will require gpg to decrypt this. Try `brew install gpg`.
+#
+# Adding more rows
+# 1. cd ~/Blake/bx
+# 2. gpg data/logins.gpg
+# 3. vi data/logins # well you don't really need vi.
+# 4. gpg -c data/logins # please re-use the master password
+# 5. git commit data/logins.gpg
+# 6. git push
+
+require File.expand_path("../../lib/ev", __FILE__)
+
+raise 'Please get GPG. i.e. `brew install gpg`' unless File.which('gpg')
+system "gpg -o - #{File.join Ev.root, 'data', 'logins.gpg'}"

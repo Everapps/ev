@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 # Usage: ev logins
 # Summary: shows you all our general use logins
-# Help: Talk to Lachie or SengMing for the master password.
+# Help: Talk to sengming.tan@evercondo.com for the master password.
 # You will require gpg to decrypt this. Try `brew install gpg`.
 #
 # Adding more rows

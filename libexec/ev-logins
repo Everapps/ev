@@ -4,11 +4,11 @@
 # Help: Talk to sengming.tan@evercondo.com for the master password.
 # You will require gpg to decrypt this. Try `brew install gpg`.
 #
-# Adding more rows
+# Adding more passwords
 # 1. cd ev
 # 2. gpg data/logins.gpg
 # 3. vi data/logins # well you don't really need vi.
-# 4. gpg -c data/logins # please re-use the master password
+# 4. gpg -c --cipher-algo AES256 data/logins # please re-use the master password
 # 5. git commit data/logins.gpg
 # 6. git push
 

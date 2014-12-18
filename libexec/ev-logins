@@ -6,13 +6,21 @@
 #
 # Adding more passwords
 # 1. cd ev
-# 2. gpg data/logins.gpg
-# 3. vi data/logins # well you don't really need vi.
-# 4. gpg -c --cipher-algo AES256 data/logins # please re-use the master password
-# 5. git commit data/logins.gpg
-# 6. git push
+# 2. ev logins decrypt-and-edit
+# 3. ev logins encrypt
+# 4. git push
 
 require File.expand_path("../../lib/ev", __FILE__)
 
 raise 'Please get GPG. i.e. `brew install gpg`' unless File.which('gpg')
-system "gpg --quiet -o - #{File.join Ev.root, 'data', 'logins.gpg'}"
+
+if ARGV[0] == 'decrypt-and-edit'
+  system 'gpg --quiet data/logins.gpg'
+  exec 'vi data/logins'
+elsif ARGV[0] == 'encrypt'
+  puts 'Please re-use the same Master Password'
+  system 'gpg -c --cipher-algo AES256 data/logins'
+  system 'git commit -m "updates logins" data/logins.gpg'
+else
+  system "gpg --quiet -o - #{File.join Ev.root, 'data', 'logins.gpg'}"
+end

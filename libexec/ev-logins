@@ -19,7 +19,7 @@ if ARGV[0] == 'decrypt-and-edit'
   exec 'vi data/logins'
 elsif ARGV[0] == 'encrypt'
   puts 'Please re-use the same Master Password'
-  system 'gpg -c --cipher-algo AES256 data/logins'
+  system 'gpg -c --cipher-algo AES256 data/logins && rm data/logins'
   system 'git commit -m "updates logins" data/logins.gpg'
 else
   system "gpg --quiet -o - #{File.join Ev.root, 'data', 'logins.gpg'}"
